@@ -20,6 +20,7 @@ namespace Entities.Models
         public string Name { get; set; }
         [StringLength(1000,ErrorMessage ="Description cannot be more than 1000 characters")]
         public string Description{ get; set; }
+        public int DataType { get; set; }
         [ForeignKey(nameof(SubSection))]
         public int SubSectionID { get; set; }
         public SubSection SubSection { get; set; }

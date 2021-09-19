@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunSheets", "RunSheets.csproj", "{7E655679-0332-4F0C-AC12-75359BDF39F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunsheetsAPI", "..\RunsheetsAPI\RunsheetsAPI.csproj", "{7ED7EB2F-872F-4235-9BEF-E1A7BBC54204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunsheetsAPI", "..\RunsheetsAPI\RunsheetsAPI.csproj", "{7ED7EB2F-872F-4235-9BEF-E1A7BBC54204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "..\Entities\Entities.csproj", "{48ED5266-3F33-4A75-B5D9-6F065E70793A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "..\Entities\Entities.csproj", "{48ED5266-3F33-4A75-B5D9-6F065E70793A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "..\Contracts\Contracts.csproj", "{E4C02822-290A-44F0-96CF-E7627B0BA0BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "..\Contracts\Contracts.csproj", "{E4C02822-290A-44F0-96CF-E7627B0BA0BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "..\Repository\Repository.csproj", "{1C39021E-7E37-4966-84FD-1C39D3A7BCB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "..\Repository\Repository.csproj", "{1C39021E-7E37-4966-84FD-1C39D3A7BCB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

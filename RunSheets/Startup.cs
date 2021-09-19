@@ -28,6 +28,8 @@ namespace RunSheets
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddHttpClient();
+            
             services.AddSingleton<WeatherForecastService>();
         }
 

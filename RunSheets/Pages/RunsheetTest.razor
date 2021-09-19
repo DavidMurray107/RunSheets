@@ -1,0 +1,44 @@
+﻿@page "/runsheet"
+@inject HttpClient http
+<h1>RunsheetTest</h1>
+
+@if (runsheet != null)
+{
+    <h3>Runsheet: @runsheet.SheetName</h3>
+    if (runsheet.SubSections != null)
+    {
+        foreach (var subsection in runsheet.SubSections)
+        {
+            if (subsection.DataFields != null)
+            {
+                <h4>@subsection.SubSectionName</h4>
+                foreach (var df in subsection.DataFields)
+                {
+                    <label>@df.Name</label>
+                    <FormElement DataType="df.DataType"></FormElement>
+                }
+            }
+        }
+    }
+
+}
+
+@code {
+    private RunsheetDto runsheet;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get,
+            "https://localhost:5011/api/runsheet/1/Datafields");
+        var response = http.Send(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+
+            runsheet = await JsonSerializer.DeserializeAsync<RunsheetDto>(responseStream, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, ReferenceHandler = ReferenceHandler.Preserve, IncludeFields = true });
+        }
+    }
+
+
+}

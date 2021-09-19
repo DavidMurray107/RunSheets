@@ -1,16 +1,38 @@
-﻿<h3>FormElement</h3>
-<div class="col-xs-1 form-field">
-    <input type="@DataType" onblur="SaveData" />
+﻿<div class="col-xs-1 form-field">
+    @switch ((Entities.Helpers.HelperEnums.DataType)DataType)
+    {
+        case Entities.Helpers.HelperEnums.DataType.Number:
+        default:
+            <input type="number" onblur="SaveData" />
+            break;
+        case Entities.Helpers.HelperEnums.DataType.Checkbox:
+            <input type="checkbox" onblur="SaveData" />
+            break;
+        case Entities.Helpers.HelperEnums.DataType.DropDown:
+            <select onblur="SaveData" >
+                <option>1</option>
+                <option>2</option>
+            </select>
+            break;
+        case Entities.Helpers.HelperEnums.DataType.Text:
+            <input type="text" onblur="SaveData" />
+            break;
+        case Entities.Helpers.HelperEnums.DataType.Time:
+            <input type="datetime" onblur="SaveData" />
+            break;
+
+    }
+
 </div>
 @code {
 
-    [Parameter]
-    public int DataType{ get; set; }
+        [Parameter]
+        public int DataType{ get; set; }
 
 
-    public void SaveData()
+        public void SaveData()
         {
             //this sends shit to the DB.
         }
-    
-}
+
+    }

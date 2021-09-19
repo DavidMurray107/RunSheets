@@ -6,6 +6,7 @@
         public string Datakey { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public int DataType { get; set; }
         public int SortOrder { get; set; }
         public decimal MaxValue { get; set; }
         public decimal MinValue { get; set; }
