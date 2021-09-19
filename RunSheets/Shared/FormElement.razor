@@ -1,0 +1,16 @@
+﻿<h3>FormElement</h3>
+<div class="col-xs-1 form-field">
+    <input type="@DataType" onblur="SaveData" />
+</div>
+@code {
+
+    [Parameter]
+    public int DataType{ get; set; }
+
+
+    public void SaveData()
+        {
+            //this sends shit to the DB.
+        }
+    
+}
