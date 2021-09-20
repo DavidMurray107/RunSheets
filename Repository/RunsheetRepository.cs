@@ -2,6 +2,7 @@
 using Entities;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Repository
@@ -23,6 +24,17 @@ namespace Repository
         {
             return FindByCondition(runsheet => runsheet.ID == ID)
                 .FirstOrDefault();
+        }
+
+        public Runsheet GetRunsheetWithDatafieldsAndReports(int ID, DateTime reportDate)
+        {
+            return FindByCondition(runsheet => runsheet.ID == ID)
+              .Include(rs => rs.SubSections)
+                  .ThenInclude(ss => ss.DataFields)
+              .Include(rs => rs.ReportEntries.Where(re => re.ReportDate == reportDate))
+                .ThenInclude(re => re.ReportDataEntries)
+              .AsSingleQuery()
+              .FirstOrDefault();
         }
 
         public Runsheet GetRunsheetWithSubsectionAndDatafields(int ID)

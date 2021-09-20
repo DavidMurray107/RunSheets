@@ -74,6 +74,30 @@ namespace RunsheetsAPI.Controllers
                 return StatusCode(500, "Internal Server Error");
             }
         }
+        [HttpGet("{id}/{date}")]
+        public IActionResult GetRunsheetsWithDatafieldsAndReportData(int id, DateTime date)
+        {
+            try
+            {
+                var Runsheets = _repo.Runsheet.GetRunsheetWithDatafieldsAndReports(id,date);
+                if (Runsheets == null)
+                {
+                    _logger.LogError($"Runsheet with id: {id}, date: {date}, could not be found in the database.");
+                    return NotFound();
+                }
+                else
+                {
+                    _logger.LogInformation($"Returned Runsheet for Id: {id} with ReportDate from {date}");
+                    var RunsheetResults = _mapper.Map<RunsheetDto>(Runsheets);
+                    return Ok(RunsheetResults);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong in the GetRunsheetsWithDatafieldsAndReportData Action {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
             
 
         // GET: api/Runsheet

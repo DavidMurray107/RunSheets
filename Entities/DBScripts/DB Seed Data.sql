@@ -42,3 +42,29 @@ values
 
 
 
+
+
+insert into ReportEntry (CreateDate,LastMod , ReportDate ,RunsheetID, Col)
+Values 
+('2021-09-18 12:00:00.000','2021-09-18 15:00:00.000', '2021-09-18', 1, 1),
+('2021-09-19 12:00:00.000','2021-09-19 15:00:00.000', '2021-09-19', 1, 1),
+('2021-09-20 12:00:00.000','2021-09-20 15:00:00.000', '2021-09-20', 1, 1)
+
+insert into ReportDataEntry (ReportEntryID,DataFieldID,Val,Flag,Qualitative)
+Values 
+(1,1,null,0,'12:00'),
+(1,2,null,0,'DM'),
+(1,3,50,0,null),
+(1,4,40,0,null),
+(1,6,10,0,null),
+(2,1,null,0,'11:00'),
+(2,2,null,0,'DJM'),
+(2,3,10,0,null),
+(2,4,50,0,null),
+(2,6,40,0,null),
+(3,1,null,0,'10:00'),
+(3,2,null,0,'DM'),
+(3,3,40,0,null),
+(3,4,10,0,null),
+(3,6,50,0,null)
+

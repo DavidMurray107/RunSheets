@@ -15,7 +15,7 @@
                 foreach (var df in subsection.DataFields)
                 {
                     <label>@df.Name</label>
-                    <FormElement DataType="df.DataType"></FormElement>
+                    <FormElement DataType="@df.DataType"></FormElement>
                 }
             }
         }

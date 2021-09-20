@@ -24,6 +24,6 @@ namespace Entities.Models
         public int InputTypeID { get; set; }
         public InputType InputType { get; set; }
         public ICollection<SubSection> SubSections { get; set; }
-
+        public ICollection<ReportEntry> ReportEntries { get; set; }
     }
 }

@@ -1,3 +1,7 @@
+drop Table if exists ReportDataEntry
+drop Table if exists ReportEntry
+drop Table if exists DatafieldReferences
+drop Table if exists DatafieldDropdownData
 drop Table if exists Datafield
 drop Table if exists SubSection
 drop Table if exists Runsheet
@@ -37,28 +41,29 @@ MaxValue decimal(10,4),
 isVisible int,
 CssClass varchar(1000)
 )
-drop Table if exists DatafieldDropdownData
+
 Create Table DatafieldDropdownData (
 ID int Identity(1,1) Primary Key,
 DataFieldID int References DataField(ID),
 ItemValue varchar(100),
 ItemText varchar(1000)
 )
-drop Table if exists DatafieldReferences
+
 Create Table DatafieldReferences (
 ID int Identity(1,1) Primary Key,
 SourceDatafieldKey varchar(1000) References Datafield(DataKey),
 TargetDataFieldKey varchar(1000) References Datafield(DataKey)
 )	
-drop Table if exists ReportEntry
+
 Create Table ReportEntry (
 ID int Identity(1,1) Primary Key,
 CreateDate datetime,
 LastMod datetime, 
+ReportDate datetime,
 RunsheetID int References Runsheet(ID),
 Col int
 )
-drop Table if exists ReportDataEntry
+
 Create Table ReportDataEntry(
 ID int Identity(1,1) Primary Key,
 ReportEntryID int References ReportEntry(ID),

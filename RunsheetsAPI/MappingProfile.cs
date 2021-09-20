@@ -12,6 +12,8 @@ namespace RunsheetsAPI
             CreateMap<InputType, InputTypeDto>();
             CreateMap<Runsheet, RunsheetDto>();
             CreateMap<SubSection, SubSectionDto>();
+            CreateMap<ReportEntry, ReportEntryDto>();
+            CreateMap<ReportDataEntry, ReportDataEntryDto>();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Entities
         public DbSet<Runsheet> Runsheets { get; set; }
         public DbSet<SubSection> SubSections { get; set; }
         public DbSet<DataField> DataFields { get; set; }
-
+        public DbSet<ReportEntry> ReportEntries { get; set; }
+        public DbSet<ReportDataEntry> ReportDataEntries { get; set; }
     }
 }

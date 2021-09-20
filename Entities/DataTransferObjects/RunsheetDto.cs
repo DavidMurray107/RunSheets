@@ -15,5 +15,6 @@ namespace Entities.DataTransferObjects
         public int InputTypeID { get; set; }
         public InputTypeDto InputType { get; set; }
         public IEnumerable<SubSectionDto> SubSections { get; set; }
+        public IEnumerable<ReportEntryDto> ReportEntries { get; set; }
     }
 }

@@ -6,6 +6,8 @@
         IInputTypeRepository InputType { get; }
         IRunsheetRepository Runsheet { get; }
         ISubSectionRepository SubSection { get; }
+        IReportEntryRepository ReportEntry { get; }
+        IReportDataEntryRepository DataEntry { get; }
         void Save();
         
     }

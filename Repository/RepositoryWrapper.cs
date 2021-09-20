@@ -9,6 +9,8 @@ namespace Repository
         private IInputTypeRepository _inputType;
         private IRunsheetRepository _runsheet;
         private ISubSectionRepository _subsection;
+        private IReportEntryRepository _reportEntry;
+        private IReportDataEntryRepository _reportDataEntry;
 
         public IDataFieldRepository DataField
         {
@@ -59,6 +61,31 @@ namespace Repository
                 }
 
                 return _subsection;
+            }
+        }
+
+        public IReportEntryRepository ReportEntry
+        {
+            get
+            {
+                if (_reportEntry == null)
+                {
+                    _reportEntry = new ReportEntryRepository(_repoContext);
+                }
+
+                return _reportEntry;
+            }
+        }
+        public IReportDataEntryRepository DataEntry
+        {
+            get
+            {
+                if (_reportDataEntry == null)
+                {
+                    _reportDataEntry = new ReportDataEntryRepository(_repoContext);
+                }
+
+                return _reportDataEntry;
             }
         }
         public RepositoryWrapper(RepositoryContext repositoryContext)
