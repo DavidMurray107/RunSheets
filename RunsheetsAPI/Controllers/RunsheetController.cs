@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.Models;
 using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -98,6 +99,65 @@ namespace RunsheetsAPI.Controllers
                 return StatusCode(500, "Internal Server Error");
             }
         }
+        [HttpGet("ReportEntry/{id}")]
+        public IActionResult GetReportEntry(int id)
+        {
+            try
+            {
+                var reportEntry = _repo.ReportEntry.GetReportByID(id);
+                if (reportEntry == null)
+                {
+                    _logger.LogError($"Report Entry with id: {id}, could not be found in the database.");
+                    return NotFound();
+                }
+                else
+                {
+                    _logger.LogInformation($"Returned Runsheet for Id: {id}");
+                    var RunsheetResults = _mapper.Map<ReportEntryDto>(reportEntry);
+                    return Ok(RunsheetResults);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong in the GetReportEntry Action {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+        [HttpPost]
+        public IActionResult PostReportEntry([FromBody] ReportEntryForUpdateDto ReportEntry)
+        {
+            try
+            {
+
+                if(ReportEntry == null)
+                {
+                    _logger.LogError("ReportEntry object sent from client is null.");
+                    return BadRequest("ReportEntry object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid ReportEntry object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+
+                var ReportEntryEntity = _mapper.Map<ReportEntry>(ReportEntry);
+
+                _repo.ReportEntry.CreateReportEntry(ReportEntryEntity);
+                _repo.Save();
+
+                var CreatedReport = _mapper.Map<ReportEntryDto>(ReportEntryEntity);
+                //this return throws an error in swagger right now. 
+                return CreatedAtRoute("ReportEntry", new { id = CreatedReport.ID }, CreatedReport);
+             
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Something went wrong in the PostRunsheet Action {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+       
             
 
         // GET: api/Runsheet

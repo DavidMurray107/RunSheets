@@ -14,7 +14,7 @@ namespace Entities.Models
         [ForeignKey(nameof(DataField))]
         public int DataFieldID { get; set; }
         public DataField DataField{ get; set; }
-        public decimal Val { get; set; }
+        public decimal? Val { get; set; }
         public int Flag { get; set; }
         public string Qualitative { get; set; }
     }

@@ -13,7 +13,12 @@ namespace RunsheetsAPI
             CreateMap<Runsheet, RunsheetDto>();
             CreateMap<SubSection, SubSectionDto>();
             CreateMap<ReportEntry, ReportEntryDto>();
+            CreateMap<ReportEntryForCreationDto, ReportEntry>();
+            CreateMap<ReportEntryForUpdateDto, ReportEntry>();
             CreateMap<ReportDataEntry, ReportDataEntryDto>();
+            CreateMap<ReportDataEntryForCreationDto, ReportDataEntry>();
+            CreateMap<ReportDataEntryForUpdateDto, ReportDataEntry>();
+            
         }
     }
 }
